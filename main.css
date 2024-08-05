@@ -1,0 +1,47 @@
+@font-face {
+    font-family: Josefin Sans;
+    src: url("./JosefinSans-VariableFont_wght.ttf") ;
+}
+@keyframes watchtower{
+    0%{
+        text-shadow: 10px 4px lightblue;
+        transform: translateX(30px);
+    }
+    100%{
+        text-shadow: -10px 4px lightblue;
+        transform: translateX(-30px);
+    }
+}
+html,
+body{
+    text-align: center;
+    font-family: Josefin Sans;
+    font-weight: 800;
+    margin: 0;
+    height: 100%;
+    user-select: none;
+}
+div {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+}
+canvas{
+    position: absolute;
+    display: flex;
+    margin:0;
+    background-color: blueviolet;
+}
+p {
+    color:white;
+    font-size: 40pt;
+    text-shadow: 10px 4px lightblue;
+    animation: watchtower 4s ease-in-out infinite alternate;
+}
+@media only screen and (max-width: 600px) {
+    
+}
