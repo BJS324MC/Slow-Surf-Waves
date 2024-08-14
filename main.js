@@ -1,4 +1,5 @@
-const paragraph = document.querySelector('p'),
+const catcher = document.querySelector('#catch'),
+    clock = document.querySelector('#clock'),
     canvas = document.querySelector('canvas'),
     ctx = canvas.getContext('2d');
 
@@ -30,7 +31,8 @@ const frame = () => {
         if (opacity < 1) opacity += opacitySpeed;
         globalMultiplier = 1;
     }
-    paragraph.style.opacity = opacity;
+    catcher.style.opacity = opacity; 
+    clock.style.opacity = 1 - opacity;
     if (time >= 1) timeMultiplier = -1;
     else if (time <= 0) timeMultiplier = 1;
     offsetP = ease([0, 0], [0, 0], [0, innerHeight/11], time)[1];
@@ -39,6 +41,8 @@ const frame = () => {
     sineGraph(position * Math.PI / 180 * wave, wave);
     frequency = (frequency + 0.2 * globalMultiplier) % 360;
     position = (position + speed * globalMultiplier) % 360;
+    let D = new Date(), m = D.getMinutes(), h = D.getHours();
+    clock.innerText = `${h === 0 ? 12 : h > 12 ? h - 12 : h}:${m > 9 ? m : '0' + m} ${h < 12 ? 'AM' : 'PM'}`;
     requestAnimationFrame(frame);
 }
 
